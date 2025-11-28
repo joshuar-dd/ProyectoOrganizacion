@@ -20,3 +20,5 @@ struct Operacion {
     string contacto;
     Operacion* siguiente;
 };
+
+//sigue: const int MAX_CONTACTOS = 100;
