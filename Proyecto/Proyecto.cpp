@@ -21,4 +21,22 @@ struct Operacion {
     Operacion* siguiente;
 };
 
-//sigue: const int MAX_CONTACTOS = 100;
+const int MAX_CONTACTOS = 100;
+Contacto* contactos[MAX_CONTACTOS];
+int totalContactos = 0;
+
+Contacto* listaEliminados = NULL;
+Operacion* pilaHistorial = NULL;
+Contacto* frenteCola = NULL;
+Contacto* finalCola = NULL;
+NodoArbol* arbolContactos = NULL;
+
+void limpiarPantalla() {
+    system("cls");
+}
+
+void pausar() {
+    cout << "\nPresione enter para continuar";
+    cin.ignore();
+    cin.get();
+}
