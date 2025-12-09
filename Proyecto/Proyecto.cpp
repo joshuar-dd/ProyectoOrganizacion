@@ -123,3 +123,38 @@ void busquedaBinaria() {
         return;
     }
 
+    string telefonoBuscado;
+    cout << "Telefono a buscar: ";
+    cin.ignore();
+    getline(cin, telefonoBuscado);
+
+    ordenarContactos();
+
+    int inicio = 0;
+    int fin = totalContactos - 1;
+    bool encontrado = false;
+
+    while (inicio <= fin) {
+        int medio = (inicio + fin) / 2;
+
+        if (contactos[medio]->telefono == telefonoBuscado) {
+            cout << "Encontrado: " << contactos[medio]->nombre
+                << " | " << contactos[medio]->telefono
+                << " | " << contactos[medio]->email << endl;
+            encontrado = true;
+            break;
+        }
+        else if (contactos[medio]->telefono < telefonoBuscado) {
+            inicio = medio + 1;
+        }
+        else {
+            fin = medio - 1;
+        }
+    }
+
+    if (!encontrado) {
+        cout << "Contacto no encontrado\n";
+    }
+}
+
+
