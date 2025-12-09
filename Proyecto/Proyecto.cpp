@@ -96,3 +96,30 @@ void listaContactos() {
             << " | " << contactos[i]->email << endl;
     }
 }
+void busquedaSecuencial() {
+    string nombreBuscado;
+    cout << "Nombre a buscar: ";
+    cin.ignore();
+    getline(cin, nombreBuscado);
+
+    bool encontrado = false;
+    for (int i = 0; i < totalContactos; i++) {
+        if (contactos[i]->nombre.find(nombreBuscado) != string::npos) {
+            cout << "Encontrado: " << contactos[i]->nombre
+                << " | " << contactos[i]->telefono
+                << " | " << contactos[i]->email << endl;
+            encontrado = true;
+        }
+    }
+
+    if (!encontrado) {
+        cout << "Contacto no encontrado\n";
+    }
+}
+
+void busquedaBinaria() {
+    if (totalContactos == 0) {
+        cout << "No hay contactos para buscar\n";
+        return;
+    }
+
