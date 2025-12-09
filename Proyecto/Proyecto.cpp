@@ -189,6 +189,74 @@ void eliminarContacto() {
 
     cout << "Contacto eliminado exitosamente\n";
 }
+void mostrarHistorial() {
+    if (pilaHistorial == NULL) {
+        cout << "No hay operaciones en el historial\n";
+        return;
+    }
+
+    cout << "HISTORIAL DE OPERACIONES\n";
+    Operacion* actual = pilaHistorial;
+    int contador = 1;
+
+    while (actual != NULL) {
+        cout << contador << actual->tipo << " - " << actual->contacto << endl;
+        actual = actual->siguiente;
+        contador++;
+    }
+}
+
+void encolarContacto() {
+    Contacto* nuevo = new Contacto;
+    cout << "Nombre del contacto pendiente: ";
+    cin.ignore();
+    getline(cin, nuevo->nombre);
+    cout << "Telefono: ";
+    getline(cin, nuevo->telefono);
+    cout << "Email: ";
+    getline(cin, nuevo->email);
+    nuevo->siguiente = NULL;
+    if (frenteCola == NULL) {
+        frenteCola = nuevo;
+        finalCola = nuevo;
+    }
+    else {
+        finalCola->siguiente = nuevo;
+        finalCola = nuevo;
+    }
+
+    cout << "Contacto encolado exitosamente\n";
+}
+void procesarCola() {
+    if (frenteCola == NULL) {
+        cout << "No hay contactos pendientes en la cola\n";
+        return;
+    }
+
+    int procesados = 0;
+    while (frenteCola != NULL && totalContactos < MAX_CONTACTOS) {
+        contactos[totalContactos] = frenteCola;
+        totalContactos++;
+
+        Operacion* nuevaOp = new Operacion;
+        nuevaOp->tipo = "AGREGAR";
+        nuevaOp->contacto = frenteCola->nombre;
+        nuevaOp->siguiente = pilaHistorial;
+        pilaHistorial = nuevaOp;
+
+        Contacto* temp = frenteCola;
+        frenteCola = frenteCola->siguiente;
+        temp->siguiente = NULL;
+
+        procesados++;
+    }
+
+    if (frenteCola == NULL) {
+        finalCola = NULL;
+    }
+
+    cout << "Se procesaron " << procesados << " contactos de la cola\n";
+}
 
 
 
