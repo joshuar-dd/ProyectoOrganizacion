@@ -156,5 +156,39 @@ void busquedaBinaria() {
         cout << "Contacto no encontrado\n";
     }
 }
+void eliminarContacto() {
+    if (totalContactos == 0) {
+        cout << "No hay contactos para eliminar\n";
+        return;
+    }
+
+    listaContactos();
+    int posicion;
+    cout << "Seleccione el numero del contacto a eliminar ";
+    cin >> posicion;
+
+    if (posicion < 1 || posicion > totalContactos) {
+        cout << "Posicion invalida\n";
+        return;
+    }
+
+    posicion--;
+
+    contactos[posicion]->siguiente = listaEliminados;
+    listaEliminados = contactos[posicion];
+
+    Operacion* nuevaOp = new Operacion;
+    nuevaOp->tipo = "ELIMINAR";
+    nuevaOp->contacto = contactos[posicion]->nombre;
+    nuevaOp->siguiente = pilaHistorial;
+    pilaHistorial = nuevaOp;
+    for (int i = posicion; i < totalContactos - 1; i++) {
+        contactos[i] = contactos[i + 1];
+    }
+    totalContactos--;
+
+    cout << "Contacto eliminado exitosamente\n";
+}
+
 
 
