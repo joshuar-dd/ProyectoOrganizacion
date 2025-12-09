@@ -258,5 +258,54 @@ void procesarCola() {
     cout << "Se procesaron " << procesados << " contactos de la cola\n";
 }
 
+NodoArbol* insertarArbol(NodoArbol* nodo, Contacto* contacto) {
+    if (nodo == NULL) {
+        NodoArbol* nuevo = new NodoArbol;
+        nuevo->contacto = contacto;
+        nuevo->izquierdo = NULL;
+        nuevo->derecho = NULL;
+        return nuevo;
+    }
+
+    if (contacto->nombre < nodo->contacto->nombre) {
+        nodo->izquierdo = insertarArbol(nodo->izquierdo, contacto);
+    }
+    else {
+        nodo->derecho = insertarArbol(nodo->derecho, contacto);
+    }
+
+    return nodo;
+}
+
+void recorridoInorden(NodoArbol* nodo) {
+    if (nodo != NULL) {
+        recorridoInorden(nodo->izquierdo);
+        cout << "- " << nodo->contacto->nombre << " | "
+            << nodo->contacto->telefono << " | "
+            << nodo->contacto->email << endl;
+        recorridoInorden(nodo->derecho);
+    }
+}
+
+void construirArbol() {
+    arbolContactos = NULL;
+
+    for (int i = 0; i < totalContactos; i++) {
+        arbolContactos = insertarArbol(arbolContactos, contactos[i]);
+    }
+
+    cout << "Arbol construido exitosamente\n";
+}
+
+void mostrarArbol() {
+    if (arbolContactos == NULL) {
+        cout << "El arbol esta vacio debe construir el arbol primero\n";
+        return;
+    }
+
+    cout << "CONTACTOS EN ARBOL (inorden)\n";
+    recorridoInorden(arbolContactos);
+}
+
 
 
