@@ -325,3 +325,59 @@ void mostrarMenu() {
 }
 
 
+int main() {
+    int opcion;
+
+    do {
+        mostrarMenu();
+        cin >> opcion;
+
+        switch (opcion) {
+        case 1:
+            agregarContacto();
+            break;
+        case 2:
+            listaContactos();
+            break;
+        case 3:
+            busquedaSecuencial();
+            break;
+        case 4:
+            busquedaBinaria();
+            break;
+        case 5:
+            eliminarContacto();
+            break;
+        case 6:
+            mostrarHistorial();
+            break;
+        case 7:
+            encolarContacto();
+            break;
+        case 8:
+            procesarCola();
+            break;
+        case 9:
+            construirArbol();
+            break;
+        case 10:
+            mostrarArbol();
+            break;
+        case 0:
+            cout << "Hasta luego\n";
+            break;
+        default:
+            cout << "Opcion invalida\n";
+            break;
+        }
+
+        if (opcion != 0) {
+            pausar();
+        }
+
+    } while (opcion != 0);
+
+    return 0;
+}
+
+
