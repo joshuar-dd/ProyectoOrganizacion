@@ -9,3 +9,5 @@ Requisitos Técnicos:
 -Compilador compatible con C++.
 -Sistema operativo Windows, Linux o macOS.
 
+Instrucciones de instalacion:
+Se debe clonar el proyecto, abrirlo con Visual Studio, se ejecuta y debe de empezar a aparecer las diferentes opciones a realizar en el menú.
