@@ -307,5 +307,21 @@ void mostrarArbol() {
     recorridoInorden(arbolContactos);
 }
 
+void mostrarMenu() {
+    limpiarPantalla();
+    cout << "SISTEMA DE GESTION DE CONTACTOS \n";
+    cout << "1. Agregar contacto\n";
+    cout << "2. Listar contactos\n";
+    cout << "3. Buscar contacto (nombre)\n";
+    cout << "4. Buscar contacto (Telefono)\n";
+    cout << "5. Eliminar contacto\n";
+    cout << "6. Mostrar historial de operaciones\n";
+    cout << "7. Encolar contacto pendiente\n";
+    cout << "8. Procesar cola de contactos pendientes\n";
+    cout << "9. Construir arbol de contactos\n";
+    cout << "10. Mostrar arbol de contactos\n";
+    cout << "0. Salir\n";
+    cout << "Seleccione una opcion: ";
+}
 
 
